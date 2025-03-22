@@ -18,6 +18,8 @@ async function dbConnect(): Promise<void> {
     try {
         const db = await mongoose.connect(process.env.MONGO_URI || "")
 
+
+        //ye jo isConnected number return karega na wo hame db ke andar connections array ke first element ke andar readState me milega. This is only for type safety
         connection.isConnected = db.connections[0].readyState
 
         console.log("DB Connected Successfully")
