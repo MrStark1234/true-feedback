@@ -33,8 +33,8 @@ export async function POST(request: Request) {
             }, { status: 400 })
         }
 
-        const existingUserByEmail = await UserModel.findOne({ email })
         const varifyCode = Math.floor(100000 + Math.random() * 900000).toString()
+        const existingUserByEmail = await UserModel.findOne({ email })
         if (existingUserByEmail) {
             if (existingUserByEmail.isVarified) {
                 return Response.json({

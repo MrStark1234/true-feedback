@@ -1,4 +1,4 @@
-import { log } from "console";
+
 import mongoose from "mongoose";
 
 //Database se connection ke baad jo object mujhe mil raha hai usme kya value honi chahiye or uska type kya hai
@@ -7,6 +7,20 @@ type ConnectionObject = {
 }
 
 const connection: ConnectionObject = {}
+
+// /**
+//  * Establishes a connection to the database using Mongoose.
+//  * 
+//  * This function checks if there is already an active connection to the database.
+//  * If a connection exists, it logs a message and returns early. If not, it attempts
+//  * to connect to the database using the URI specified in the environment variable
+//  * MONGO_URI. Upon a successful connection, it updates the connection status and
+//  * logs a success message. In case of an error during the connection attempt,
+//  * it logs the error and exits the process with a failure status.
+//  * 
+//  * @returns {Promise<void>} A promise that resolves when the connection attempt is complete.
+//  */
+
 
 //mujhe nahi pata promise kya return karega issiliye VOID
 async function dbConnect(): Promise<void> {
@@ -19,7 +33,8 @@ async function dbConnect(): Promise<void> {
         const db = await mongoose.connect(process.env.MONGO_URI || "")
 
 
-        //ye jo isConnected number return karega na wo hame db ke andar connections array ke first element ke andar readState me milega. This is only for type safety
+        // The isConnected number returned will be found in the readState of the first element
+        // of the connections array within the db object. This is only for type safety.
         connection.isConnected = db.connections[0].readyState
 
         console.log("DB Connected Successfully")
