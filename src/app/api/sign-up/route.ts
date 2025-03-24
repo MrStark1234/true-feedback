@@ -4,6 +4,20 @@ import bcrypt from "bcryptjs";
 import { sendVarificationEmail } from "@/helpers/sendVarificationEmail";
 
 
+// /**
+//  * Handles the POST request for user registration.
+//  * 
+//  * This function connects to the database, processes the incoming request to 
+//  * extract user details, checks for existing users by username and email, 
+//  * and either updates the existing user or creates a new user. It also 
+//  * generates a verification code and sends a verification email to the user.
+//  * 
+//  * @param {Request} request - The incoming request object containing user registration data.
+//  * @returns {Promise<Response>} - A promise that resolves to a Response object indicating 
+//  * the success or failure of the registration process.
+//  */
+
+
 export async function POST(request: Request) {
     await dbConnect()
 
